@@ -1,4 +1,11 @@
 h1{
     font-family: sans-serif;
     border-bottom: 2px solid #ccc;
+    text-align: center;
+}
+p{
+    
+    color: #555;
+
+    text-align: center;
 }
