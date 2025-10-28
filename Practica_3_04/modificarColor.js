@@ -5,5 +5,10 @@ let azul = parseInt(Math.random()*255);
 
 document.write(
 
+`<div id="fondo" style="background-color: rgb(${rojo}, ${verde}, ${azul}); width: 100%; height: 100%;"></div>`
 
-)
+
+
+);
+
+
