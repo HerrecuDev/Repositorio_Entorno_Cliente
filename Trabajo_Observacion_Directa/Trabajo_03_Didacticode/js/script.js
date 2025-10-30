@@ -2,13 +2,73 @@
 
 
 //Suma dos numeros y devuelve el valor:
-function suma(valor1,valor2){
+function sumar(valor1,valor2){
 
     return valor1 + valor2;
 }
 
 
+//Resta dos numeros y devuelve el valor :
+function restar(valor1,valor2){
+
+    return valor1 - valor2;
+}
+
+//Multiplica dos numeros y devuelve el valor:
+function multiplicar(valor1,valor2){
+
+    return valor1 * valor2;
+}
+
+
+//GENERO UNA FUNCION GENERICA PARA CADA OPERACION :
+
+function realizarOperacion(tipo){
+    var num1 = Number(document.getElementById('txtNumero1').value);
+    var num2 = Number(document.getElementById('txtNumero2').value);
+    var lblResultado = document.getElementById('resultOp');
+
+
+    if(isNaN(num1) || isNaN(num2)){
+
+        console.log("No es posible realizar la operacion")
+        return;
+    }
+
+    //Declaro la variable resultado generica:
+
+    let resultado = 0;
+
+    switch(tipo){
+
+        case 'sumar':
+            resultado = sumar(num1,num2);
+            break;
+        case 'restar':
+             resultado = restar(num1,num2);
+            break;
+        case 'multiplicar':
+             resultado = multiplicar(num1,num2);
+            break;
+
+        default:
+            console.log("Operacion no valida");
+            return;
+
+
+    }
+
+    console.log(`Resultado de la (${tipo}): ${resultado}`);
+   
+    lblResultado.innerHTML = resultado.toFixed(2);
+
+}
+
+
+/*DE LAS FORMA QUE LO REALIZO JAVIER EN CLASE*/ 
 //REaliza la operación suma:
+
+/*
 function realizarOperacionSuma(){
 
     console.log("Realiar operacion de suma");
@@ -43,16 +103,19 @@ function realizarOperacionSuma(){
     lblResultado.innerHTML = resultadoSuma.toFixed(2);
 
 }
+    */
+
 
 //Funcion Inicializadora :
 
 function init(){
 
-    //Obtener la referencia al boton de sumar(btnSumar)
-    var btnSumar = document.getElementById("btnSumar");
+    //Obtengo la referencia de todos los botones :
+   
 
-    btnSumar.addEventListener("click" , realizarOperacionSuma);
-
+    document.getElementById("btnSumar").addEventListener("click" ,() => realizarOperacion("sumar"));
+    document.getElementById("btnRestar").addEventListener("click" ,() => realizarOperacion("restar"));
+    document.getElementById("btnMultiplicar").addEventListener("click" ,() => realizarOperacion("multiplicar"));
 
 }
 
