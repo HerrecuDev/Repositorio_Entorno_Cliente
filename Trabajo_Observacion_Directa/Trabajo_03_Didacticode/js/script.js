@@ -201,6 +201,19 @@ function init(){
     document.getElementById("btnRestar").addEventListener("click" , realizarOperacionRestar);
     document.getElementById("btnMultiplicar").addEventListener("click" ,realizarOperacionMultiplicar);
 
+
+    //Formas avanzadas de realizar lo mismo :
+    /**
+    btnSumar.addEventListener("click" , function(e){
+        realizarOperacionSumar
+    })
+
+    btnSumar.addEventListener("click" , (e) => {
+        realizarOperacionRestar();
+    })
+
+    document.getElementById('btnSumar').addEventListener('click' , (e) => realizarOperacionSumar());
+*/
 }
 
 
