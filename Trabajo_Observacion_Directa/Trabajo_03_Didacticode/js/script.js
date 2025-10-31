@@ -20,7 +20,7 @@ function multiplicar(valor1,valor2){
     return valor1 * valor2;
 }
 
-
+/*AUN NO PODEMOS HACER ESTO
 //GENERO UNA FUNCION GENERICA PARA CADA OPERACION :
 
 function realizarOperacion(tipo){
@@ -64,24 +64,41 @@ function realizarOperacion(tipo){
 
 }
 
+*/
 
-/*DE LAS FORMA QUE LO REALIZO JAVIER EN CLASE*/ 
-//REaliza la operación suma:
 
-/*
-function realizarOperacionSuma(){
+/*Funcion para obtener numeros */
 
-    console.log("Realiar operacion de suma");
+function obtenerNumeros(){
 
-    //Obtener numero 1 :
+    //Obtener numero 1:
     var num1 = document.getElementById('txtNumero1').value;
-    //console.log('numero 1 : ' + num1);
-
     num1 = Number(num1);
 
     //Obtener numero 2 :
     var num2 = document.getElementById('txtNumero2').value;
     num2 = Number(num2);
+
+    //Array de los valores devueltos :
+    return [num1 , num2];
+
+
+}
+
+
+
+/*REALIZO VARIAS FUNCIONES SIMILARES PARA CADA OPERACION*/ 
+//Realiza la operación suma:
+
+
+function realizarOperacionSumar(){
+
+    console.log("Realiar operacion de suma");
+
+    var resultadoDevuelto = obtenerNumeros();
+
+    num1 = resultadoDevuelto[0];
+    num2 = resultadoDevuelto[1];
 
     var resultadoSuma = 0;
 
@@ -89,13 +106,13 @@ function realizarOperacionSuma(){
 
     if (!isNaN (num1) && !isNaN (num2)) {
 
-        resultadoSuma = suma(num1 , num2);
+        resultadoSuma = sumar(num1 , num2);
         
     }else{
         console.log("No puedo hacer la suma");
         return;
     }
-
+    console.log("\n")
     console.log("Resultado sumar : " + resultadoSuma);
 
     //Mostrar resultado en etiqueta
@@ -103,7 +120,71 @@ function realizarOperacionSuma(){
     lblResultado.innerHTML = resultadoSuma.toFixed(2);
 
 }
-    */
+
+//Funcion Restar :
+
+function realizarOperacionRestar(){
+
+    console.log("Realiar operacion restar");
+
+    var resultadoDevuelto = obtenerNumeros();
+
+    num1 = resultadoDevuelto[0];
+    num2 = resultadoDevuelto[1];
+
+
+    var resultadoResta = 0;
+
+    //Realizar la resta :
+
+    if (!isNaN (num1) && !isNaN (num2)) {
+
+        resultadoResta = restar(num1 , num2);
+        
+    }else{
+        console.log("No puedo hacer la resta");
+        return;
+    }
+
+    console.log("Resultado restar : " + resultadoResta);
+
+    //Mostrar resultado en etiqueta
+    var lblResultado = document.getElementById('resultOp');
+    lblResultado.innerHTML = resultadoResta.toFixed(2);
+
+}
+
+//Funcion Multiplicar:
+function realizarOperacionMultiplicar(){
+
+    console.log("Realiar operacion Multiplicacion");
+
+     var resultadoDevuelto = obtenerNumeros();
+
+    num1 = resultadoDevuelto[0];
+    num2 = resultadoDevuelto[1];
+
+    var resultadoMultiplicar = 0;
+
+
+    if (!isNaN (num1) && !isNaN (num2)) {
+
+        resultadoMultiplicar = multiplicar(num1 , num2);
+        
+    }else{
+        console.log("No puedo hacer la multiplicación");
+        return;
+    }
+
+    console.log("Resultado multiplicar : " + resultadoMultiplicar);
+
+    //Mostrar resultado en etiqueta
+    var lblResultado = document.getElementById('resultOp');
+    lblResultado.innerHTML = resultadoMultiplicar.toFixed(2);
+
+}
+
+
 
 
 //Funcion Inicializadora :
@@ -112,10 +193,13 @@ function init(){
 
     //Obtengo la referencia de todos los botones :
    
+    //Forma mas legible de declararlo :
+    var btnSumar = document.getElementById("btnSumar");
+    btnSumar.addEventListener("click" , realizarOperacionSumar);
 
-    document.getElementById("btnSumar").addEventListener("click" ,() => realizarOperacion("sumar"));
-    document.getElementById("btnRestar").addEventListener("click" ,() => realizarOperacion("restar"));
-    document.getElementById("btnMultiplicar").addEventListener("click" ,() => realizarOperacion("multiplicar"));
+    //Forma mas avanzada de generarlo:
+    document.getElementById("btnRestar").addEventListener("click" , realizarOperacionRestar);
+    document.getElementById("btnMultiplicar").addEventListener("click" ,realizarOperacionMultiplicar);
 
 }
 
