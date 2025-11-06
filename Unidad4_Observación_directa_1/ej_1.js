@@ -5,16 +5,18 @@ Escribir la matriz por consola.
 
 
 
-//Variables :
+//Variables y constantes :
 let matriz = [];
+const columna = 3;
+const fila = 3;
 
 //Con dos bucles for anidados genero mi matriz :
 
-for (let i = 0;i < 3;i++) {
+for (let i = 0;i < columna;i++) {
 
-    matriz[i] = []; //Vamos creando las filas
+   matriz[i] = []; //Vamos creando las filas
    
-    for (let j = 0; j < 3; j++) {
+    for (let j = 0; j < fila; j++) {
         if (i === j) {
             matriz[i][j] = 1; //Para que en la diagonal principal los valores sean 1.
 
