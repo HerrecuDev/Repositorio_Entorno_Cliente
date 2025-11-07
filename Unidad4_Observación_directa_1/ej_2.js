@@ -9,14 +9,14 @@ Crear un botón que muestre el texto "mostrar matriz", y al hacer click se muest
 donde cada celda contendrá el número entre 0 y el máximo solicitado al usuario. */
 
 //Variables :
-        let matrizUsuario = [];
+        const matrizUsuario = [];
         let columna = Number(0);
         let filas = Number(0);
         let numeroMax = Number(0);
 
 
 function realizarMatriz(){
-console.log("HOla");
+
         
 
 
@@ -29,46 +29,24 @@ console.log("HOla");
              for (let i = 0; i < columna; i++) {
 
                 matrizUsuario [i] = [];
-                tablaHTML += `<tr>`;
+                
 
                 for (let j = 0; j < filas; j++) {
 
                     matrizUsuario[i][j] = Math.floor((Math.random() * numeroMax)+1);
-                    
-                     tablaHTML += `
-                     <td>
-                        <strong> ${matrizUsuario[i][j]} </strong>
-
-
-                    <td>`;
+                    document.write("<td>" + "[" + matrizUsuario[i][j] + "]" + "</td>");
+                   
+                     
                 }
 
-                 
+                 document.write("<br>"); 
 
             }
 
-           
-            tablaHTML += `</tr>`;
-            console.log(matrizUsuario)
-
-
-
-            let tablaHTML2 = `<tabla border="1">
             
-            <tr>
-                <td> 1 </td>
-                <td> 2 </td>
+             document.write("</table>");
 
-            <tr>
-
-             <tr>
-                <td> 3 </td>
-                <td> 4 </td>
-
-            <tr>
-            
-            </table>`;
-
+        
             
             
         }else{
@@ -80,14 +58,3 @@ console.log("HOla");
 
 
 }
-
-function init() {
-
-var btnMatriz = document.getElementById("resultMatriz").innerHTML = tablaHTML;
-   
-    
-}
-
-
-window.onload = init;
-    
