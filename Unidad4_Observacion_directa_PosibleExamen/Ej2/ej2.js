@@ -23,22 +23,29 @@ método reverse estándar. */
 
 function revertirArray() {
 
-    const miArray = ["A" , "B" , "C"];
+    const miArray = ["A" , "B" , "C","D","E" , "F" , "G","H"];
     const arrayInvertido = [];
 
+    //Primero abro el table :
+    document.write("<table border = '1'><tr>")
+
     for (let i = miArray.length-1; i >= 0; i--) {
-        
+
         arrayInvertido.push(miArray[i]);
+        
+        document.write("<td>" + "[" + miArray[i] + "]" + "</td>")
         
     }
 
-
+    document.write("<tr></table");
     return arrayInvertido
 
     
 }
 
 console.log(revertirArray());
+
+
 
 
 
