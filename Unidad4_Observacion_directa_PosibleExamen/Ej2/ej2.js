@@ -50,7 +50,7 @@ console.log(revertirArray());
 
 
 
-//Ahora lo realizo e una funcion sin poner el array dentro :
+//Ahora lo realizo e una funcion sin crear un arraySecundario dentro :
 
 function revertirArrayenSuLugar(arrayUsuario) {
 
