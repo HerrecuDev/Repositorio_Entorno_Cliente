@@ -130,9 +130,37 @@ KeyListener.prototype.isPressed = function (key) {
     return this.pressedKeys[key] ? true : false;
 };
 
+
+
+
+    // Caracteres que representan movimientos y controles
+    CAR_I_ARRIBA_U = "A"; // Mover paleta izquierda arriba mayusculas
+
+    CAR_I_ARRIBA_L = CAR_I_ARRIBA_U.toLowerCase(); // PI arriba minusculas
+    CAR_I_ABAJO_U = "Z"; // Mover paleta izquierda abajo mayusculas
+    CAR_I_ABAJO_L = CAR_I_ABAJO_U.toLowerCase(); // PI abajo minusculas
+    CAR_D_ARRIBA_U = "K"; // Mover paleta derecha arriba mayusculas
+    CAR_D_ARRIBA_L = CAR_D_ARRIBA_U.toLowerCase(); // PD arriba minusculas
+    CAR_D_ABAJO_U = "M"; // Mover paleta derecha abajo mayusculas
+    CAR_D_ABAJO_L = CAR_D_ABAJO_U.toLowerCase(); // PD abajo minusculas
+    // KeyCode (Movimiento paletas)
+    KEY_I_ARRIBA_U = CAR_I_ARRIBA_U.charCodeAt(0); // mayusculas
+    KEY_I_ARRIBA_L = CAR_I_ARRIBA_L.charCodeAt(0); // minusculas
+    KEY_I_ABAJO_U = CAR_I_ABAJO_U.charCodeAt(0); // Mayusculas
+    KEY_I_ABAJO_L = CAR_I_ABAJO_L.charCodeAt(0); // minusculas
+    KEY_D_ARRIBA_U = CAR_D_ARRIBA_U.charCodeAt(0); // Mayusculas
+    KEY_D_ARRIBA_L = CAR_D_ARRIBA_L.charCodeAt(0); // Minusculas
+    KEY_D_ABAJO_U = CAR_D_ABAJO_U.charCodeAt(0); // Mayusculas
+    KEY_D_ABAJO_L = CAR_D_ABAJO_L.charCodeAt(0); // Minusculas
+    // Inicializacion deteccion de pulsaciones para KeyCode
+    PI_ARRIBA = false;
+    PI_ABAJO = false;
+    PD_ARRIBA = false;
+    PD_ABAJO = false;
+
 //COn esta funcion asignams cada tecla al MOVIMIENTO QUE QUEREMOS QUE REALICE LAS PALAS:
 function controlar_pulsacion() {
-    if (keys.isPressed(KEY_I_ABAJO_U || KEY_I_ABAJO_L)) { // Abajo Izq
+    if (keys.isPressed( KEY_I_ABAJO_U || KEY_I_ABAJO_L)) { // Abajo Izq
 
         PI_ABAJO = true;
 
