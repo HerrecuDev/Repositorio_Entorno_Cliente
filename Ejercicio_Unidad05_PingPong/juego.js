@@ -53,11 +53,11 @@ function inicializa_parametros(){
 
     //Posiciones de las paletas de jugadores (IZQ | DER)
 
-    jix = separacion;
+    jiX = separacion;
     jiY = alto_canvas / 2 - alto_pala/2;
 
-    jdx = ancho_canvas - separacion - ancho_pala;
-    jdy = jiY;
+    jdX = ancho_canvas - separacion - ancho_pala;
+    jdY = jiY;
 
 
     
@@ -68,15 +68,15 @@ function inicializa_parametros(){
 
 //Pala izquierda :
 
-function dibuja_jugador(jix , jiY){
+function dibuja_jugador_izq(jiX , jiY){
 
     context.fillStyle = "white";
-    context.fillRect(jix, jiY , ancho_pala , alto_pala);
+    context.fillRect(jiX, jiY , ancho_pala , alto_pala);
 }
-function dibuja_jugador(jdx , jdY){
+function dibuja_jugador_der(jdX , jdY){
 
     context.fillStyle = "white";
-    context.fillRect(jdx, jdY , ancho_pala , alto_pala);
+    context.fillRect(jdX, jdY , ancho_pala , alto_pala);
 }
 
 
@@ -160,25 +160,22 @@ KeyListener.prototype.isPressed = function (key) {
 
 //COn esta funcion asignams cada tecla al MOVIMIENTO QUE QUEREMOS QUE REALICE LAS PALAS:
 function controlar_pulsacion() {
-    if (keys.isPressed( KEY_I_ABAJO_U || KEY_I_ABAJO_L)) { // Abajo Izq
-
+    // Izquierda abajo
+    if (keys.isPressed(KEY_I_ABAJO_U) || keys.isPressed(KEY_I_ABAJO_L)) {
         PI_ABAJO = true;
 
-    } else if (keys.isPressed(KEY_I_ARRIBA_U || KEY_I_ARRIBA_L)) { //
-       //ARRIBA IZQUIERDA
-
+    // Izquierda arriba
+    } else if (keys.isPressed(KEY_I_ARRIBA_U) || keys.isPressed(KEY_I_ARRIBA_L)) {
         PI_ARRIBA = true;
     }
 
-    if (keys.isPressed(KEY_D_ABAJO_U || KEY_D_ABAJO_L)) { // Abajo Der
+    // Derecha abajo
+    if (keys.isPressed(KEY_D_ABAJO_U) || keys.isPressed(KEY_D_ABAJO_L)) {
         PD_ABAJO = true;
 
-
-    } else if (keys.isPressed(KEY_D_ARRIBA_U || KEY_D_ARRIBA_L)) { 
-        //ARRIBA DERECHA
-
+    // Derecha arriba
+    } else if (keys.isPressed(KEY_D_ARRIBA_U) || keys.isPressed(KEY_D_ARRIBA_L)) {
         PD_ARRIBA = true;
-
     }
     calcula_coordenadas_pala();
 }
@@ -227,8 +224,8 @@ function bucle(){
     calcula_coordenadas_pelota();
     controlar_pulsacion();
     dibuja_pelota(x,y);
-    dibuja_jugador(jix ,jiY);
-    dibuja_jugador(jdx,jdy);
+    dibuja_jugador_izq(jiX ,jiY);
+    dibuja_jugador_der(jdX,jdY);
     setTimeout(bucle ,4);
 }
 
