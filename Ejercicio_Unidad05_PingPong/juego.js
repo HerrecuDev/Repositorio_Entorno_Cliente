@@ -29,8 +29,19 @@ function principal(){
 
 
 function inicializa_parametros(){
+
+
+    // Sonidos
+    
+    beep = new Audio("beep.wav");
+    punto = new Audio("punto.wav");
+    hay_sonido = true;
+
+ 
     // Canvas campo
     canvas = document.getElementById("campo");
+
+    
     ancho_canvas = canvas.width;
     alto_canvas = canvas.height;
     context = canvas.getContext("2d");
@@ -59,6 +70,9 @@ function inicializa_parametros(){
     jdX = ancho_canvas - separacion - ancho_pala;
     jdY = jiY;
 
+    // Inicializa flags y partida AL FINAL, cuando todo está definido
+    PD_ABAJO = false;
+    inicio_partida();
 
     
 
@@ -85,17 +99,52 @@ function dibuja_jugador_der(jdX , jdY){
 function calcula_coordenadas_pelota(){
     x += incX;
     y += incY;
+    // Comprobacion de la pelota respecto de la pala izquierda
+    if (y >= jiY && y <= jiY + alto_pala - 1) {
+        if (x <= jiX + ancho_pala) {
 
-    if (x + ancho_pelota > ancho_canvas || x < 0) {
+            incX = -incX; // Cambio de direccion horizontal
+            x = jiX + ancho_pala;
+            
+            if (hay_sonido) beep.play();
+        }
+    } else {
+        // Si ha rebasado la posicion de la pala es un punto para el
+        // jugador contrario.
+        if (x < jiX - separacion) {
+            
+            inicio_punto();
+            puntosD += 1;
 
-        incX = -incX;
-        
+            if (hay_sonido) punto.play();
+        }
     }
-    if(y + alto_pelota > alto_canvas || y < 0){
+    // Comprobacion de la pelota respecto de la pala derecha
+    if (y >= jdY && y <= jdY + alto_pala - 1) {
 
+        if (x + ancho_pelota >= jdX) {
+            
+            incX = -incX; // Cambio de direccion horizontal
+            x = jdX - ancho_pelota;
+
+            if (hay_sonido) beep.play();
+        }
+    } else {
+        // Si ha rebasado la posicion de la pala es un punto para el
+        // jugador contrario.
+        if (x + ancho_pelota > jdX + separacion) {
+            inicio_punto();
+            puntosI += 1;
+
+            if (hay_sonido) punto.play();
+        }
+    }
+    // Si la pelota rebota en la parte superior o inferior de la pantalla
+    // cambia de direccion vertical.
+    if (y + alto_pelota > alto_canvas || y < 0) {
         incY = -incY;
+        if (hay_sonido) beep.play();
     }
-
 }
 
 //Dibujo la pelota:
@@ -226,8 +275,67 @@ function bucle(){
     dibuja_pelota(x,y);
     dibuja_jugador_izq(jiX ,jiY);
     dibuja_jugador_der(jdX,jdY);
+    dibuja_puntuacion();
     setTimeout(bucle ,4);
 }
+
+
+
+// Inicializa valores para el inicio de un punto
+    function inicio_punto() {
+        inicioY = Math.floor((Math.random() * alto_canvas / 2) + 1);
+
+        x = ancho_canvas / 2; // Iniciamos desde el centro del campo
+
+        y = inicioY; // La posicion vertical de la pelota es aleatoria
+
+        // La direccion de la pelota en es aleatoria
+        valorX = Math.floor((Math.random() * 100) + 1);
+
+            if (valorX < 50) {
+
+                incX = inc_pelota;
+            } else {
+
+                incX = -inc_pelota;
+            }
+
+
+        valorY = Math.floor((Math.random() * 100) + 1);
+
+            if (valorY < 50) {
+                incY = inc_pelota;
+            } else {
+                incY = -inc_pelota;
+            }
+        // Posiciones de las paletas de jugadores (i)zq y (d)er.
+
+            jiX = separacion;
+            jiY = alto_canvas / 2 - alto_pala / 2;
+            jdX = ancho_canvas - separacion - ancho_pala;
+            jdY = jiY;
+    }
+
+
+    // Inicializa valores para el inicio de una partida
+    function inicio_partida() {
+
+        puntosI = 0;
+        puntosD = 0;
+        inicio_punto();
+    }
+
+    
+
+    // Muestra puntuacion cada vez que se produce un cambio
+function dibuja_puntuacion() {
+
+    context.fillStyle = "white";
+    context.font = "48px Georgia";
+    context.fillText(puntosI, ancho_canvas / 4, 30);
+    context.fillText(puntosD, (ancho_canvas * 3) / 4, 30);
+}
+    
 
 principal();
 
