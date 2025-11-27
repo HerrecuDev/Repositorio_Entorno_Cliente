@@ -1,0 +1,44 @@
+body { 
+    font-family: Arial, 
+    sans-serif; margin: 
+    22px; 
+    padding: 0;
+}
+#formulario-libro input, #formulario-libro button, #busqueda-categoria {
+     margin: 
+     5px; 
+}
+button { 
+    padding: 6px 12px; 
+    border: none; 
+    background: #198DCA; 
+    color: white; 
+    border-radius: 5px;
+    cursor:pointer;
+ }
+button:hover { 
+    background: #145C85; 
+
+}
+ul { margin-top: 18px; 
+    padding-left: 0;
+}
+
+li { 
+    
+    margin-bottom: 9px; 
+    list-style: none; 
+    border-bottom: 1px solid #ddd; 
+    padding-bottom:6px; 
+}
+.prestado { 
+    
+    color: gray; 
+    text-decoration: line-through; 
+}
+.categoria { 
+    
+    font-weight: bold; 
+    color: #198DCA; 
+    margin-left:14px; 
+}
