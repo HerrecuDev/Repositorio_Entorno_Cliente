@@ -11,24 +11,30 @@
 
             <h1>Biblioteca Digital</h1>
 
-                <div id="formulario-libro">
+            <div>
+                <input type="text" id="titulo" placeholder="Título del libro">
+                <input type="text" id="categoria" placeholder="Categoría">
+                <button id="agregar">Agregar libro</button>
+            </div>
 
-                    <input type="text" id="titulo" placeholder="Título del libro">
-                    <input type="text" id="categoria" placeholder="Categoría">
-                    <button id="agregar">Agregar libro</button>
-                    
-                </div>
-            <div style="margin-top:18px;">
+            <div>
+                <label for="">Prestar Libro</label>
+                <input type="text">
+                <button id="prestar">Prestar</button>
 
-                <button id="mostrar-todos">Mostrar todos</button>
-                <button id="mostrar-disponibles">Mostrar disponibles</button>
-                <input type="text" id="busqueda-categoria" placeholder="Buscar por categoría">
-                <button id="buscar-categoria">Buscar categoría</button>
+            </div>
+                <label for="">Devolver Libro</label>
+                <input type="text">
+                <button id="devolver">Devolver</button>
+
+            <div>
 
             </div>
 
-
-            <ul id="lista-libros"></ul>
+            <div>
+                <ul id="lista-libros"></ul>
+            </div>
+            
 
             
             <script src="/Unidad06/proyecto_Biblioteca_Unidad06/biblioteca.js"></script>
