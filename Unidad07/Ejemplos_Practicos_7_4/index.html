@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explicacion practica de como funciona el token</title>
+</head>
+
+<style>
+    .resaltar { background-color: yellow; font-weight: bold; }
+    .activo { border: 3px solid green; padding: 10px; }
+</style>
+
+<body>
+
+    <p id="clase">Texto</p>
+
+    <button id="btn">Ejecutar cambio</button>
+
+    <script>
+
+        let p = document.getElementById("clase");
+        let miboton = document.getElementById("btn");
+
+        miboton.addEventListener("click" , function(){
+
+            p.classList.add("resaltar");
+            p.classList.toggle("activo");
+            
+            let clon = p.cloneNode(true);
+            document.body.appendChild(clon);
+
+            p.scrollIntoView();
+
+
+        });
+
+      
+
+
+    </script>
+    
+</body>
+</html>
